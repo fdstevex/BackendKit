@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>New Password</title>
+</head>
+<body>
+
+<h1>Set your new password</h1>
+<p>Enter the password you want to use.</p>
+
+<form action="../../api/v1/resetPassword.php" method="POST">
+    <div>
+        Password: <br>
+        <input type="text" name="newpassword"><br>
+
+        <input type="hidden" name="redirect" value="html/resetpass/passwordchanged.html">
+        <input type="hidden" name="errorredirect" value="html/resetpass/newpass.html">
+        <input id="tokenField" type="hidden" name="vt" value="">
+    </div>
+    <input type="submit" name="Submit">
+</form>
+
+<script>
+    function getCookie(cname)
+    {
+        var name = cname + "=";
+        var ca = document.cookie.split(';');
+        for(var i=0; i<ca.length; i++)
+        {
+            var c = ca[i].trim();
+            if (c.indexOf(name)==0) return c.substring(name.length,c.length);
+        }
+        return "";
+    }
+
+    function deleteCookie( name, path, domain ) {
+        if( getCookie( name ) ) {
+            document.cookie = name + "=" +
+                    ((path) ? ";path="+path:"")+
+                    ((domain)?";domain="+domain:"") +
+                    ";expires=Thu, 01 Jan 1970 00:00:01 GMT";
+        }
+    }
+
+    var authToken = getCookie('BEKVerificationToken');
+    tokenField.value = authToken;
+    deleteCookie('BEKVerificationToken', "/");
+    console.log(authToken);
+
+</script>
+
+</body>
+</html>

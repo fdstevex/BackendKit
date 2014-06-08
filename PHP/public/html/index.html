@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>BackendKit Simple HTML</title>
+</head>
+<body>
+
+<h1>Using BackendKit from basic HTML</h1>
+<p>The pages in this directory are simple HTML forms, with no external dependencies, that let the user create an account and log in.</p>
+
+<ul>
+    <li><a href="login.html">Login Form</a></li>
+    <li><a href="register.html">Registration Form</a></li>
+    <li><a href="resetpass/forgotpass.html">Forgot Password Form</a></li>
+    <li><a href="changepass.html">Change Password</a></li>
+    <li><a id="logoutLink" href="../api/v1/logout?redirect=html/index.html">Logout</a></li>
+</ul>
+
+<p>Current status: <span id="loginStatus"></span></p>
+
+<p id="lastOperationStatus"></p>
+
+<script>
+    function getCookie(cname)
+    {
+        var name = cname + "=";
+        var ca = document.cookie.split(';');
+        for(var i=0; i<ca.length; i++)
+        {
+            var c = ca[i].trim();
+            if (c.indexOf(name)==0) return c.substring(name.length,c.length);
+        }
+        return "";
+    }
+
+    function deleteCookie( name, path, domain ) {
+        if( getCookie( name ) ) {
+            document.cookie = name + "=" +
+                    ((path) ? ";path="+path:"")+
+                    ((domain)?";domain="+domain:"") +
+                    ";expires=Thu, 01 Jan 1970 00:00:01 GMT";
+        }
+    }
+
+    // Create the CSRF token and update the Logout URL to include it
+    var csrfToken = Math.random().toString(36).substr(2);
+    var d = new Date();
+    d.setTime(d.getTime()+(1*24*60*60*1000));
+    document.cookie = 'BEKCSRF=' + csrfToken + ";expires=" + d.toGMTString() + "; path=/";
+    var logoutElement = document.getElementById('logoutLink');
+    logoutElement.href += "&BEKCSRF=" + csrfToken;
+
+    var authToken = getCookie('BEKAuthToken');
+    loginStatus.innerHTML = authToken ? "Logged in." : "Not logged in.";
+
+    var reason = getCookie('BEKLastReason');
+    var reasonCode = getCookie('BEKLastReasonCode');
+    if (reason || reasonCode) {
+        lastOperationStatus.innerHTML = decodeURIComponent(reason).replace(/\+/g, " ") + " (" + reasonCode + ")";
+        deleteCookie('BEKLastReason', "/");
+        deleteCookie('BEKLastReasonCode', "/");
+    }
+
+</script>
+
+</body>
+</html>

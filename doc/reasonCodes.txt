@@ -1,0 +1,13 @@
+100: email address has already been registered
+101: email or password is invalid (badly formatted)
+102: registration succeed, email verification required to login
+103: login failed, because email address not verified
+104: validation required, but sending validation email failed
+403: unable to authenticate
+405: email address verification token is not valid
+406: forgot password link click, token is invalid
+407: reset password link click, token is invalid
+429: request throttled; try again in a few seconds
+501: registration created an account, but didn't return an authToken
+502: database error logging in
+503: unable to send mail

@@ -1,0 +1,7 @@
+Please click the link below to verify your account.
+
+{{link}}
+
+If you didn't recently sign up for an account, then you can safely ignore this message.
+
+Thanks!

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Forgotten Password Page</title>
+</head>
+<body>
+
+<h1>Forgot Password</h1>
+<p>Use this form to recover a lost password.</p>
+
+<form action="../../api/v1/resetPassword" method="POST">
+    <div>
+        Email: <br>
+        <input type="text" name="email"><br>
+        <input type="hidden" name="redirect" value="html/resetpass/forgotpass-sent.html">
+    </div>
+    <input type="submit" name="Submit">
+</form>
+
+</body>
+</html>

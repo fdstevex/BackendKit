@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>New Password</title>
+</head>
+<body>
+
+<h1>Change new password</h1>
+<p>Enter your old password, and the password you want to use.</p>
+
+<form id="resetForm" action="../api/resetPassword" method="POST">
+    <div>
+        Current Password: <br>
+        <input type="text" name="password"><br>
+        New Password: <br>
+        <input type="text" name="newpassword"><br>
+        <input type="hidden" name="redirect" value="html/index.html">
+        <input type="hidden" name="errorredirect" value="html/changepass.html">
+        <input type="hidden" name="BEKCSRF" id="csrfTokenField">
+    </div>
+    <input type="submit" name="Submit">
+</form>
+
+<script>
+    // Create the CSRF token and update the Logout URL to include it
+    var csrfToken = Math.random().toString(36).substr(2);
+    var d = new Date();
+    d.setTime(d.getTime()+(1*24*60*60*1000));
+    document.cookie = 'BEKCSRF=' + csrfToken + ";expires=" + d.toGMTString() + "; path=/";
+    var logoutElement = document.getElementById('logoutLink');
+    csrfTokenField.value = csrfToken;
+</script>
+
+</body>
+</html>

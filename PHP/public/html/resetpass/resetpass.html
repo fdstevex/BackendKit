@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Reset Password</title>
+</head>
+<body>
+
+<h1>Reset Password</h1>
+
+<p>Enter the email address for the account you'd like to recover access to.</p>
+
+<form action="../../api/v1/resetPassword" method="POST">
+    <div>
+        Email: <br>
+        <input type="text" name="email"><br>
+        <input type="hidden" name="redirect" value="../html/index.html">
+    </div>
+    <input type="submit" name="Submit">
+</form>
+
+</body>
+</html>

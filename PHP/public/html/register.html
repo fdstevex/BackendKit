@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>BackendKit HTML Registration Page</title>
+</head>
+<body>
+
+<h1>Simple Registration Page</h1>
+<p>This form simply sends the registration request to api/login and then redirects back to index.html.</p>
+
+
+<form action="../api/v1/register" method="POST">
+    <div>
+        Email: <br>
+        <input type="text" name="email"><br>
+        Password:<br>
+        <input type="password" name="password"><br><br>
+        <input type="hidden" name="redirect" value="html/index.html">
+    </div>
+    <input type="submit" name="Submit">
+</form>
+
+</body>
+</html>
