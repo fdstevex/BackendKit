@@ -27,10 +27,10 @@ But that doesn't mean it won't scale. If you do find yourself needing to scale u
 
 #### Current Status
 
-This is a new project, that hasn't been deployed anywhere yet. I will be using it myself, but I'll be developing this portion 
+This is a new project, that hasn't been deployed anywhere yet. I will be using it myself, developing the potions that would be useful to other apps in the open-source project.
 
 * Authentication services are implemented and working, including login, account creation, email address verification, change password, and forgot password.
-* iPhone UI is for the authentication services is provided, and ready to add to your own app.
+* iPhone UI is for the authentication services is provided, and ready to add to your own app. There are some that still need polish, like giving the user some progress indication during network activity.
 * HTML pages that implement the authentication basics are provided as a starting point.
 * Data service are not started.
 * Image service is not started.
